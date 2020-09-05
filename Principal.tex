@@ -1,0 +1,139 @@
+% Arquivo Principal para Monografias dos Cursos de Graduação do IELUSC
+
+% abnTeX2: Modelo de Trabalho Academico em conformidade com 
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+
+% Adaptado com base no abnTeX2
+% Por: Gabriel Caixeta Silva
+% E-mail: gabriel.silva@ielusc.br
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+\documentclass[
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% apenas frente (oneside) ou frente e verso (twoside)
+	a4paper,			% tamanho do papel. 
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	spanish,
+	french,
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+%Pacotes prinicipais e customização
+\usepackage{./Estilo/ielusc}
+
+%Pacote para determinar o número da última página na Ficha Catalográfica
+\usepackage{lastpage}
+
+% ---
+% Dados da Capa
+% ---
+
+\titulo{TÍTULO DO TRABALHO: SUBTÍTULO}
+\autor{NOME DO AUTOR}
+\local{Joinville}
+\instituicao{Associação Educacional Luterana BOM JESUS/IELUSC}
+\campus{Centro}
+\curso{Sistemas para Internet}
+\data{2020}
+\fulldata{xx de xxxx de 2020}
+
+% ---
+% Folha de Rosto
+% ---
+\inforosto{Trabalho de conclusão de curso para obtenção do título de graduação em Sistemas para Internet - Tecnólogo apresentado à \imprimirinstituicao}
+\orientador{Nome do Orientador}
+\orientadorRotulo{Prof. Dr. }
+\coorientador{Nome do Co-Orientador}
+\coorientadorRotulo{Prof. Dr. }
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+% ----
+% Elementos Pré-Textuais
+% ----
+\include{Partes/pretextual}
+
+% ---
+% Lista de Abreviaturas e Siglas
+% ---
+\begin{siglas}
+  \acro{OV}{Organização Virtual}
+  \acrodefplural{OV}{Organizações Virtuais}
+\end{siglas}
+
+\begin{simbolos}
+	\SingleSpacing
+	\item[\%] Porcentagem
+	\item[$D_{ab}$] Distância Euclidiana
+	\item[$O(n)$] Ordem de um algoritmo
+\end{simbolos}
+
+% ---
+% inserir o sumario
+% ---
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+\textual
+
+%Retira o nome do capítulo do header
+\pagestyle{eudesc}
+\aliaspagestyle{chapter}{eudesc}
+
+% ---
+
+\include{Partes/cap1}
+
+\include{Partes/cap2}
+
+% ---
+% Finaliza o bookmark do PDF
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+\begin{apendicesenv}
+	\include{Partes/apeA}
+\end{apendicesenv}
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+\begin{anexosenv}
+	\include{Partes/aneA}
+\end{anexosenv}
+
+\end{document}
